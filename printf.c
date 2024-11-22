@@ -6,33 +6,33 @@
 /*   By: acesar-m <acesar-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:04:13 by acesar-m          #+#    #+#             */
-/*   Updated: 2024/11/22 10:16:33 by acesar-m         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:19:48 by acesar-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_verify(char spec, va_list args)
+int	check_format(char spec, va_list args)
 {
 	int	count;
 
 	count = 0;
 	if (spec == 'c')
-		count = ft_putchar(va_arg(args, int));
+		count = print_char(va_arg(args, int));
 	else if (spec == 's')
-		count = ft_putstr(va_arg(args, char *));
+		count = print_str(va_arg(args, char *));
 	else if (spec == 'd' || spec == 'i')
-		count = ft_putbase(va_arg(args, int), "0123456789", 10);
-	else if ( spec == 'u')
-		count = ft_putbase(va_arg(args, unsigned int), "0123456789", 10);
+		count = print_base(va_arg(args, int), "0123456789", 10);
+	else if (spec == 'u')
+		count = print_base(va_arg(args, unsigned int), "0123456789", 10);
 	else if (spec == 'x')
-		count = ft_putbase(va_arg(args, unsigned int), "0123456789abcdef", 16);
+		count = print_base(va_arg(args, unsigned int), "0123456789abcdef", 16);
 	else if (spec == 'X')
-		count = ft_putbase(va_arg(args, unsigned int), "0123456789ABCDEF", 16);
+		count = print_base(va_arg(args, unsigned int), "0123456789ABCDEF", 16);
 	else if (spec == 'p')
-		count = ft_putpoint(va_arg(args, unsigned long));
+		count = print_point(va_arg(args, unsigned long));
 	else if (spec == '%')
-		count = ft_putchar('%');
+		count = print_char('%');
 	return (count);
 }
 
@@ -52,12 +52,12 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			count += ft_verify(str[i], args);
+			count += check_format(str[i], args);
 		}
 		else
-			count += ft_putchar(str[i]);
+			count += print_char(str[i]);
 		i++;
 	}
 	va_end(args);
-	return(count);
+	return (count);
 }
