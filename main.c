@@ -6,7 +6,7 @@
 /*   By: acesar-m <acesar-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:04:30 by acesar-m          #+#    #+#             */
-/*   Updated: 2024/11/21 14:04:52 by acesar-m         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:36:47 by acesar-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(void)
 	int		decimal = -42;
 	unsigned int uint = 42;
 	void	*ptr = &decimal;
+	void	*num = &decimal;
 
 	// Teste para caractere (%c)
 	printf("\n--- Teste de %%c ---\n");

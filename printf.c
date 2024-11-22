@@ -6,7 +6,7 @@
 /*   By: acesar-m <acesar-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:04:13 by acesar-m          #+#    #+#             */
-/*   Updated: 2024/11/21 14:04:16 by acesar-m         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:16:33 by acesar-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			if (str[i])
-				count += ft_verify(str[i], args);
-			else
-				break;
+			count += ft_verify(str[i], args);
 		}
 		else
 			count += ft_putchar(str[i]);
